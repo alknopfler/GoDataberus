@@ -1,7 +1,6 @@
 package database
 
 import (
-	"golang-course/src/github.com/"
 	"github.com/alknopfler/tdd_api_mongodb/data_model"
 )
 
