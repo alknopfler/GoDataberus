@@ -1,7 +1,7 @@
 package database
 
 import (
-	"github.com/alknopfler/tdd_api_mongodb/data_model"
+	"github.com/swatlabs/GoDataberus/data_model"
 )
 
 

@@ -5,9 +5,9 @@ import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 
-	"github.com/alknopfler/tdd_api_mongodb/database"
+	"github.com/swatlabs/GoDataberus/database"
 	"time"
-	"github.com/alknopfler/tdd_api_mongodb/data_model"
+	"github.com/swatlabs/GoDataberus/data_model"
 )
 
 type MongoDB struct {
