@@ -3,8 +3,8 @@ package api
 import (
 	"github.com/gorilla/mux"
 	"net/http"
-	"github.com/alknopfler/tdd_api_mongodb/database"
-	"github.com/alknopfler/tdd_api_mongodb/data_model"
+	"github.com/swatlabs/GoDataberus/database"
+	"github.com/swatlabs/GoDataberus/data_model"
 
 )
 

@@ -2,9 +2,9 @@ package main
 
 
 import (
-	"github.com/alknopfler/tdd_api_mongodb/driver"
-	"github.com/alknopfler/tdd_api_mongodb/database"
-	"github.com/alknopfler/tdd_api_mongodb/api"
+	"github.com/swatlabs/GoDataberus/driver"
+	"github.com/swatlabs/GoDataberus/database"
+	"github.com/swatlabs/GoDataberus/api"
 	"net/http"
 )
 
