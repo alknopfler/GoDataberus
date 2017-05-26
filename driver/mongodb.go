@@ -19,7 +19,7 @@ type MongoDB struct {
 func (mdb *MongoDB) Initialize(c *database.ConnectionDB) error {
 
  	mongoDBDialInfo := &mgo.DialInfo{
-		Addrs:    []string{c.Ipaddress},
+		Addrs:    []string{c.DbIpaddress},
 		Timeout:  10 * time.Second,
 		Database: c.Dbname,
 		//Username: AuthUserName,
@@ -32,7 +32,7 @@ func (mdb *MongoDB) Initialize(c *database.ConnectionDB) error {
 	session.SetMode(mgo.Monotonic, true)
 	mdb.session = session
 	mdb.database = c.Dbname
-	mdb.collection = "mycollection"
+	mdb.collection = "mycollection"    //could be passed by env
 	return nil
 }
 
@@ -44,7 +44,6 @@ func (mdb *MongoDB) InsertEntity(i *data_model.Information) error {
 		fmt.Println("Error while inserting item in mongo")
 		return err
 	}
-
 	fmt.Println("Item inserted in Mongo")
 	return nil
 }
