@@ -6,24 +6,27 @@ import (
 	"github.com/swatlabs/GoDataberus/database"
 	"github.com/swatlabs/GoDataberus/data_model"
 
+	"github.com/swatlabs/GoDataberus/driver"
 )
 
 //HandlerController function
-func HandlerController(drv database.Store, db database.ConnectionDB) *mux.Router {
+func HandlerController() *mux.Router {
 	r := mux.NewRouter()
-	r.HandleFunc("/v0/countries/{country}/services/{serviceid}", func(w http.ResponseWriter, r *http.Request) {
-		HandlerServices(w,r,drv,db)
-	}).Methods("GET")
+	r.HandleFunc("/v0/databerus/{dbType}", HandlerDatabase).Methods("PUT")
 	return r
 }
 
 
-func HandlerServices(w http.ResponseWriter, r *http.Request, drv database.Store, db database.ConnectionDB) {
-	service, _ := mux.Vars(r)["serviceid"]
-	country, _ := mux.Vars(r)["country"]
+func HandlerDatabase(w http.ResponseWriter, r *http.Request) {
+	dbType, _ := mux.Vars(r)["dbType"]
+	var drv database.Store
 
-	//db := database.ConnectionDB{"localhost","services"}
-	//driver := mongodb.MongoDB{}
+	switch dbType {
+	case "mongo":
+		drv = mongodb.MongoDB{}
+
+	}
+
 
 	drv.Initialize(&db)
 	info := data_model.Information{country,service,""}
