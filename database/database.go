@@ -6,7 +6,9 @@ import (
 
 
 type ConnectionDB struct {
-	Ipaddress  	string
+	DbProto         string
+	DbIpaddress  	string
+	DbPort          string
 	Dbname		string
 }
 
