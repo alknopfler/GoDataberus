@@ -9,7 +9,15 @@ type ConnectionDB struct {
 	DbProto         string
 	DbIpaddress  	string
 	DbPort          string
-	Dbname		string
+	DbName		string
+	DbUsername	string   //this is optional if the type of database requires auth
+	DbPassword      string   //this is optional if the type of database requires auth
+	DbCollection    string   //this is optional just in case that we use mongodb
+}
+
+type BodyRequest struct{
+	Connection	ConnectionDB `json:"DBconnection"`
+	Message 	data_model.Information `json:"data"`
 }
 
 type Store interface {

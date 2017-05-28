@@ -14,7 +14,7 @@ func init (){
 }
 
 func main() {
-		err := http.ListenAndServe(":8080", api.HandlerController)
+		err:=http.ListenAndServe(":8080", api.HandlerController())
 		if err != nil{
 			gologger.Print("ERROR",1,"Error with the Server","main.go")
 		}

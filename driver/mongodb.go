@@ -1,4 +1,4 @@
-package mongodb
+package driver
 
 import (
 	"fmt"
@@ -8,6 +8,8 @@ import (
 	"github.com/swatlabs/GoDataberus/database"
 	"time"
 	"github.com/swatlabs/GoDataberus/data_model"
+	"github.com/alknopfler/Gologger/gologger"
+	"errors"
 )
 
 type MongoDB struct {
@@ -17,22 +19,30 @@ type MongoDB struct {
 }
 
 func (mdb *MongoDB) Initialize(c *database.ConnectionDB) error {
+	if c.DbIpaddress == "" || c.DbProto == "" || c.DbName == "" || c.DbPort == "" || c.DbCollection == ""{
+		gologger.Print("ERROR", 1, "Empty value retrieved", "mongodb.go")
+		return errors.New("Empty values retrieved")
+	}
 
- 	mongoDBDialInfo := &mgo.DialInfo{
+	mongoDBDialInfo := &mgo.DialInfo{
 		Addrs:    []string{c.DbIpaddress},
 		Timeout:  10 * time.Second,
-		Database: c.Dbname,
-		//Username: AuthUserName,
-		//Password: AuthPassword,
+		Database: c.DbName,
+		Username: c.DbUsername,
+		Password: c.DbPassword,
 	}
+
 	session, err := mgo.DialWithInfo(mongoDBDialInfo)
 	if err != nil {
 		return err
 	}
+	defer session.Close()
+
 	session.SetMode(mgo.Monotonic, true)
 	mdb.session = session
-	mdb.database = c.Dbname
-	mdb.collection = "mycollection"    //could be passed by env
+	mdb.database = c.DbName
+	mdb.collection = c.DbCollection
+
 	return nil
 }
 
