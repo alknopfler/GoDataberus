@@ -8,7 +8,7 @@ import (
 	"encoding/json"
 
 	"github.com/swatlabs/GoDataberus/driver"
-
+	"github.com/satori/go.uuid"
 )
 
 func GetDataFromBody(r *http.Request) (database.BodyRequest,error){
@@ -39,3 +39,9 @@ func GetDriver(input string) database.Store {
 			return &drv
 		}
 }
+
+func NewResourceID() string {
+	return uuid.NewV1().String()
+
+}
+

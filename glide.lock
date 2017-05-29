@@ -1,5 +1,5 @@
-hash: 9c8db22176b18fab089553d8931985d68b42e0eac76e7ccc0cc22c767883ed90
-updated: 2017-05-28T11:18:29.929310688+02:00
+hash: 950287bdc61c78dbc2e08647c66633f34c9962d61ba644a2a5a7c6360ab1e1b1
+updated: 2017-05-29T23:16:50.77845006+02:00
 imports:
 - name: github.com/alknopfler/Gologger
   version: 7bf5df6bef9ca8f939a928ae73798c000340b396
@@ -7,10 +7,22 @@ imports:
   - gologger
 - name: github.com/BurntSushi/toml
   version: b26d9c308763d68093482582cea63d69be07a0f0
+- name: github.com/garyburd/redigo
+  version: 433969511232c397de61b1442f9fd49ec06ae9ba
+- name: github.com/go-redis/redis
+  version: ee42c3d5d3a806afc7763d3993f900b2941f8e35
+  subpackages:
+  - internal
+  - internal/consistenthash
+  - internal/hashtag
+  - internal/pool
+  - internal/proto
 - name: github.com/gorilla/context
   version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
 - name: github.com/gorilla/mux
   version: 392c28fe23e1c45ddba891b0320b3b5df220beea
+- name: github.com/satori/go.uuid
+  version: 879c5887cd475cd7864858769793b2ceb0d44feb
 - name: github.com/sirupsen/logrus
   version: ba1b36c82c5e05c4f912a88eab0dcd91a171688f
 - name: github.com/stretchr/testify

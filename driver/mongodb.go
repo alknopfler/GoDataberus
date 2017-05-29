@@ -36,7 +36,6 @@ func (mdb *MongoDB) Initialize(c *database.ConnectionDB) error {
 	if err != nil {
 		return err
 	}
-	defer session.Close()
 
 	session.SetMode(mgo.Monotonic, true)
 	mdb.session = session
@@ -48,7 +47,6 @@ func (mdb *MongoDB) Initialize(c *database.ConnectionDB) error {
 
 func (mdb *MongoDB) InsertEntity(i *data_model.Information) error {
 	c := mdb.session.DB(mdb.database).C(mdb.collection)
-
 	err := c.Insert(i)
 	if err != nil {
 		fmt.Println("Error while inserting item in mongo")
