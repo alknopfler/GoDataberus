@@ -1,14 +1,26 @@
-hash: 9b75436e04d91070f38de72568322be058bfc8b354bde24e3fc1a821d104943c
-updated: 2017-05-14T13:38:19.706372173+02:00
+hash: 9c8db22176b18fab089553d8931985d68b42e0eac76e7ccc0cc22c767883ed90
+updated: 2017-05-28T11:18:29.929310688+02:00
 imports:
+- name: github.com/alknopfler/Gologger
+  version: 7bf5df6bef9ca8f939a928ae73798c000340b396
+  subpackages:
+  - gologger
+- name: github.com/BurntSushi/toml
+  version: b26d9c308763d68093482582cea63d69be07a0f0
 - name: github.com/gorilla/context
   version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
 - name: github.com/gorilla/mux
   version: 392c28fe23e1c45ddba891b0320b3b5df220beea
+- name: github.com/sirupsen/logrus
+  version: ba1b36c82c5e05c4f912a88eab0dcd91a171688f
 - name: github.com/stretchr/testify
   version: 69483b4bd14f5845b5a1e55bca19e954e827f1d0
   subpackages:
   - assert
+- name: golang.org/x/sys
+  version: dbc2be9168a660ef302e04b6ff6406de6f967473
+  subpackages:
+  - unix
 - name: gopkg.in/mgo.v2
   version: 3f83fa5005286a7fe593b055f0d7771a7dce4655
   subpackages:
@@ -16,6 +28,8 @@ imports:
   - internal/json
   - internal/sasl
   - internal/scram
+- name: gopkg.in/yaml.v2
+  version: cd8b52f8269e0feb286dfeef29f8fe4d5b397e0b
 testImports:
 - name: github.com/davecgh/go-spew
   version: 6d212800a42e8ab5c146b8ace3490ee17e5225f9

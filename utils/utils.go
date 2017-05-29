@@ -3,10 +3,12 @@ package utils
 import (
 	"net/http"
 	"github.com/swatlabs/GoDataberus/database"
-	"github.com/swatlabs/GoDataberus/driver"
 	"io/ioutil"
 	"github.com/alknopfler/Gologger/gologger"
 	"encoding/json"
+
+	"github.com/swatlabs/GoDataberus/driver"
+
 )
 
 func GetDataFromBody(r *http.Request) (database.BodyRequest,error){
@@ -27,12 +29,13 @@ func GetDataFromBody(r *http.Request) (database.BodyRequest,error){
 	return value,nil
 }
 
-func GetDriver(driver string) database.Store{
-
-	switch driver {
-	case "mongodb":
-		return &driver.MongoDB{}
-	default:
-		return &driver.MongoDB{}
-	}
+func GetDriver(input string) database.Store {
+		switch input{
+		case "mongo":
+			drv := driver.MongoDB{}
+			return &drv
+		default:
+			drv := driver.MongoDB{}
+			return &drv
+		}
 }
