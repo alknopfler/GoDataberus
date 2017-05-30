@@ -3,13 +3,15 @@ package driver
 import (
 	"github.com/stretchr/testify/assert"
 	"github.com/swatlabs/GoDataberus/database"
-	
+
 	"testing"
 
 	"fmt"
+	"github.com/swatlabs/GoDataberus/datamodel"
 )
 
 //general data and connection test
+/**
 var mongo MongoDB
 var dbc = database.NewConnectionDB("localhost", "test")
 var dbcError = database.NewConnectionDB("1.1.1.1", "test")
@@ -32,7 +34,7 @@ func TestMongoDB_InitializeError(t *testing.T) {
 	assert.NotEmpty(t, mongo.session)
 }
 
-/**
+
 func TestMongoDB_InsertEntity(t *testing.T) {
 	//info := datamodel.Information{"spain", "tohu", "template1"}
 	info := make(datamodel.Information)
@@ -46,7 +48,7 @@ func TestMongoDB_InsertEntity(t *testing.T) {
 	err := mongo.InsertEntity(&info)
 	assert.NoError(t, err)
 }
-**/
+
 
 func TestMongoDB_GetEntity(t *testing.T) {
 	mongo.Initialize(dbc)
@@ -57,7 +59,7 @@ func TestMongoDB_GetEntity(t *testing.T) {
 	fmt.Println(res)
 }
 
-/**
+
 func TestMongoDB_IsNew(t *testing.T) {
 	mongo.Initialize(dbc)
 	mongo.session.DB("test").C("mycollection").DropCollection()
@@ -78,3 +80,6 @@ func TestMongoDB_IsNew(t *testing.T) {
 	}
 }
 **/
+func TestMongoDB_GetEntity(t *testing.T) {
+	fmt.Println("No tests yet.")
+}
