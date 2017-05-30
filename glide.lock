@@ -1,5 +1,5 @@
-hash: 950287bdc61c78dbc2e08647c66633f34c9962d61ba644a2a5a7c6360ab1e1b1
-updated: 2017-05-29T23:16:50.77845006+02:00
+hash: c8603e4668673476cab3802f4d101371cf92e2865cec8337714493d4e420280c
+updated: 2017-05-30T19:48:59.561707901+02:00
 imports:
 - name: github.com/alknopfler/Gologger
   version: 7bf5df6bef9ca8f939a928ae73798c000340b396
@@ -9,14 +9,11 @@ imports:
   version: b26d9c308763d68093482582cea63d69be07a0f0
 - name: github.com/garyburd/redigo
   version: 433969511232c397de61b1442f9fd49ec06ae9ba
-- name: github.com/go-redis/redis
-  version: ee42c3d5d3a806afc7763d3993f900b2941f8e35
   subpackages:
   - internal
-  - internal/consistenthash
-  - internal/hashtag
-  - internal/pool
-  - internal/proto
+  - redis
+- name: github.com/go-redis/redis
+  version: 663bb76bcc3763c41877b63671003705a47289c5
 - name: github.com/gorilla/context
   version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
 - name: github.com/gorilla/mux
