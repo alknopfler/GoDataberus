@@ -1,13 +1,8 @@
 package driver
 
 import (
-	"github.com/stretchr/testify/assert"
-	"github.com/swatlabs/GoDataberus/database"
-
-	"testing"
-
 	"fmt"
-	"github.com/swatlabs/GoDataberus/datamodel"
+	"testing"
 )
 
 //general data and connection test
