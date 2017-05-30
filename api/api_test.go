@@ -4,10 +4,15 @@ import (
 	"errors"
 	"github.com/swatlabs/GoDataberus/database"
 	"github.com/swatlabs/GoDataberus/datamodel"
+	"testing"
+	"fmt"
 )
 
 type fakeDriver struct{}
 
+func TestMyRouterHandler(t *testing.T) {
+	fmt.Printf("Tests must be fixed.")
+}
 /**
 func TestMyRouterHandler(t *testing.T) {
 	cases := []struct {

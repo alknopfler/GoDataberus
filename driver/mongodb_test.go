@@ -31,6 +31,7 @@ func TestMongoDB_InitializeError(t *testing.T) {
 	assert.NotEmpty(t, mongo.database)
 	assert.NotEmpty(t, mongo.session)
 }
+
 /**
 func TestMongoDB_InsertEntity(t *testing.T) {
 	//info := datamodel.Information{"spain", "tohu", "template1"}
@@ -55,6 +56,7 @@ func TestMongoDB_GetEntity(t *testing.T) {
 	assert.NotEmpty(t, res)
 	fmt.Println(res)
 }
+
 /**
 func TestMongoDB_IsNew(t *testing.T) {
 	mongo.Initialize(dbc)
