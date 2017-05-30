@@ -15,14 +15,6 @@ env:
   - VERSION=0.0.1
   - COMMIT=${TRAVIS_COMMIT::8}
   - GLIDE_VERSION=0.12.3
-  - MONGODB_VERSION=2.6.10
-before_install:
-  - wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$MONGODB_VERSION.tgz
-  - tar xfz mongodb-linux-x86_64-$MONGODB_VERSION.tgz
-  - export PATH=`pwd`/mongodb-linux-x86_64-$MONGODB_VERSION/bin:$PATH
-  - mkdir -p data/db
-  - mongod --dbpath=data/db &
-  - sleep 3
 install:
   - wget "https://github.com/Masterminds/glide/releases/download/v${GLIDE_VERSION}/glide-v${GLIDE_VERSION}-linux-amd64.tar.gz"
   - mkdir -p $HOME/bin
