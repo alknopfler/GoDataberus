@@ -52,7 +52,6 @@ func (mdb *MongoDB) InsertEntity(i *data_model.Information) error {
 		fmt.Println("Error while inserting item in mongo")
 		return err
 	}
-	fmt.Println("Item inserted in Mongo")
 	return nil
 }
 
@@ -63,7 +62,6 @@ func (mdb *MongoDB) GetEntity(field,searchItem string) (result []data_model.Info
 	if err != nil {
 		fmt.Println("Error while running the query in mongo")
 	}
-
 	return result, err
 }
 
