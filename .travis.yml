@@ -37,10 +37,10 @@ script:
   - make check test tests
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker build -t $REPO:$VERSION -f Dockerfile .;
-    docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD;
-    docker push $REPO:$VERSION;
-  fi
+      docker build -t $REPO:$VERSION -f Dockerfile .;
+      docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD;
+      docker push $REPO:$VERSION;
+    fi
 notifications:
   email:
     recipients:
