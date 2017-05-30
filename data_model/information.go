@@ -1,5 +1,3 @@
 package data_model
 
-type Information struct {
-	data map[string]interface{}
-}
+type Information map[string]interface{}
