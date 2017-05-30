@@ -15,6 +15,14 @@ type ConnectionDB struct {
 	DbCollection string `json:"DbCollection"` //this is optional just in case that we use mongodb
 }
 
+//NewConnectionDB constructor
+func NewConnectionDB(host string, database string) *ConnectionDB {
+	connectionDB := new(ConnectionDB)
+	connectionDB.DbIpaddress = host
+	connectionDB.DbName = database
+	return connectionDB
+}
+
 //BodyRequest struct
 type BodyRequest struct {
 	Connection ConnectionDB          `json:"DBconnection"`
