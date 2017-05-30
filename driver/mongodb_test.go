@@ -3,7 +3,7 @@ package driver
 import (
 	"github.com/stretchr/testify/assert"
 	"github.com/swatlabs/GoDataberus/database"
-	"github.com/swatlabs/GoDataberus/datamodel"
+	
 	"testing"
 
 	"fmt"
