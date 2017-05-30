@@ -51,15 +51,15 @@ func HandlerInsert(w http.ResponseWriter, r *http.Request){
 	dbconnect,_:=redis.Strings((redisDB.NewRedis()).Do("LRANGE",uuid,0,-1))
 	json.Unmarshal([]byte(dbconnect[0]), &unencoded.Connection)
 
-	if err:=drv.Initialize(&unencoded.Connection);  err!=nil{
+	if err:=drv.Initialize(&unencoded.Connection);  err!=nil {
 		responseWithError(w,http.StatusServiceUnavailable,err.Error())
-	}else{
-		input,_:=utils.GetDataFromBody(r)
+	}else {
+		input, err := utils.GetDataFromBody(r)
+		if err!=nil{
+			responseWithError(w,http.StatusBadRequest,err.Error())
+		}
 		drv.InsertEntity(&input.Message)
 	}
-
-
-
 }
 
 func HandlerSearch(w http.ResponseWriter, r *http.Request){
