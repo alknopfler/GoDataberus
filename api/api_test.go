@@ -1,20 +1,14 @@
 package api
 
 import (
-	"net/http"
-	"net/http/httptest"
-	"testing"
-
 	"errors"
-	"github.com/gorilla/mux"
 	"github.com/swatlabs/GoDataberus/database"
 	"github.com/swatlabs/GoDataberus/datamodel"
-
-	"fmt"
 )
 
 type fakeDriver struct{}
 
+/**
 func TestMyRouterHandler(t *testing.T) {
 	cases := []struct {
 		description          string
@@ -65,15 +59,16 @@ func TestMyRouterHandler(t *testing.T) {
 
 	}
 }
-
+**/
 func (f *fakeDriver) Initialize(c *database.ConnectionDB) error {
-	if c.Dbname == "service" && c.Ipaddress == "localhost" {
+	if c.DbName == "service" && c.DbIpaddress == "localhost" {
 		return nil
 	}
 	return errors.New("Error Fake Initialize")
 
 }
 
+/**
 func (f *fakeDriver) InsertEntity(i *datamodel.Information) error {
 
 	if i.Service != "" {
@@ -82,6 +77,7 @@ func (f *fakeDriver) InsertEntity(i *datamodel.Information) error {
 	return errors.New("Error Fake insertEntity")
 
 }
+**/
 
 func (f *fakeDriver) GetEntity(field, searchItem string) (result []datamodel.Information, err error) {
 	return result, nil
