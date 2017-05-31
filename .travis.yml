@@ -9,9 +9,9 @@ services:
   - redis-server
 env:
   global:
-  - secure: kgtZBCmfuhxCfq16Q6M6YpQ1C0VfvZghEyhkj7UjqBkkfn92F2kzMKA9o9qgKa3r/uKw08hb4ic/FIau8WHhv+0yZrVSu8XhRyPjW3Hmp/BXl6gZ/Ksm4QGj/wx4Hve9WKlfTx0m6IRFmosszlttM25flJjqW7yI04KExnO4qdlubg6cc3aSpWyQLbsYrSiZzWwCExYYOsw+bqbPYzJq5/cItGOZIi1pkU4aieZj0pV1eguoUaYebABzzz20nfCJXLShlHFmaptVnhJdRmIgEzVUOmrb4BrRgzkwok8QUg1Ki9ntN79rW9UY3nbYjoOEVIKc/EWNjxZltQleAUqMac7R8XDNtvCesQw6hYec1ig0Vxr2IriGex/SVMmhXEQyM2RHf4T95EicPPZ1ZNe91b5kx5j69O0WEoBt79+blnaz85w6qYG6D6CIkuKs7ikhOOvZOUouhmY97bPdg/XUI8ngK32sRTAyjWORgV27R4zsCPyZxFA3mZZFQ94KZ0K335A7mo8d5/Dwcoe+ZpXkg4DkId+6J/9W1XjPX7wyd/O8RdDYHl+8Mm1JAZNHhOloHTOdoVfptYSUuwKbjFlHB16jtHzZtNdsuYzAdmKgym94nBKnvN16apDktinIW6DKtZZYKJBGNf4aEp75SzwJGO92/ThFKMjUHEvouB9rN+I=
-  - secure: CzbJG8BMu3fzcR0ic0DlgkdwRVUtq2MRKLMr29oTeLFJynyPPGhgaHCwHePrGFpA5D26XHVYXOMbX7NNXt2XwkTl+ugHQL2s9ZAnOYJSM425S/L/bfCAAjcIhNFdULxEsJMc2WWwcN0HYmmZSaTlQo5e7Xze0qdIMKVKPFYRZLceZ4E8erEckj5/+Ipcp1VkbU+i/1bjyVLB5SMCml+Y6712xCXJHqXd/hFem2+0cts7uBMCpmtk4/PJAMb+vFQyEdHojonXR/8s6wlGhiJNtZTNS/9zhB3fn/AEIjNKHTrPYjztiapqMmJD/nH2H2ByNWPwz3yQ1c5sp6Is1a4+f2shGgdo8E8tR9s3BIZRrAHgcLZW+19eOC2RIOS3TPNy+P81BfF7zG8jiVi92lwG7MytLDUzMc8dr3zsZ2vsB97UmK0Ys7wbno+wLbPEnqE0a7AYQmHe5fsYQ8tb+Fy1u6LbHHtsHF7m0Kayhw8Fne3TZmcdOJiqZas7Js33Lm5ysb3tv6P7piHHiFAoRKijulr57Sb5TYEnOFWVUVrfY8r49O28OOboFa+sT1FORS6cMZK22NE/z8vfbUdOqPZTitXwljQiY+ugf8Frz1AfE1v8Oewqm/PAMw6jj2Tif468fVhVD3UWjPLrMbq8mdMRSt6XYcNpH9m2ZwbRFmYwxbc="
-  - secure: rg6glpu1EE3GFRx18kHmbN/XP/krb9X9QahK6SSTSahYVqcmHiOZ2Fv0XAMUXpisnu2Nue5GXS0BXVdxfCN/pHQUH9ZxEtKmJNwwnv8Gu+db3+E400D8uParArX4NriVk3CEbYEEG20r7F6vRWR7KUhgMtMlEJWDSvap/IWT2OWyliQvL9t1S8gVirgtR8JqDsVyajx8/6i3jx8ZihmivowS035ObsOeu4ChDEgHZP5welUrltRMRtBRDP0eKp4f32JCMyD+Fb6LYdmpXzvuktgm6dufPaNyOrwdE91dinv0qOiVuYU5OajtXpGJZuOqpvdT0pYxrnDx5pazqRTyPRvei64Mf3mg0qqpJSiw39rorODZdrSA/D+uuiuxvPvfScjTK+tj2DbBHbfclogVn8Lky4tMO0smoD3wQ/Iyy+cBv0m+pf6SS01c3DM9HM/zFXE/xkrBNKoG+UBi6eusPfBIuKynJn8VumTl9BYcsdOWDlMB45d7pPw1UE7o1CREEcsLDd2TjQ9B7EPqJ2SZyQvmhG1SHPa3JBfhTeE+5mntEPNYmCcH0EpeRA0Pd9FUNGzR40wf5wjOq5TkqooZpMxV9z56XN1tF7IYW+dtvETDA0jBVteCANVR2/mKW1lUau5Sn5QKd5G2raOhcltjVkg7LN3SZpfktqsIhtQVtrA=
+  - secure: HCUb4CxhPlg74k5y8FSqX9AwDS6oK1/DFxNDJmnGzA9nEEmT0nPHVFP8IvvPdKTjealvTjzGHu6Y94IxfvCirlKqlLNVAXEh9hq4qz6gmnaeRuvEySB/Cni2lNzVbzavBP0npoD8WkDaeC4Vkh3YwInSQDnrlqKeBWeUdROA0cIqDG/h1RthGg1wmuFzdXxTw/VgrRnLocwgkftZwcR0jWq3jInEXikEOLFKA6BKTH8UZwt8esPkfsNDkmTo3u38iKaS8s9XPVEzmudH9oULCcjhA9q13trRpXNsSshqIGnfzshFrtUTADqlR+hA+9o73HcZ/UWot+r25rsJbTLKkcuu9EqobTDdbnzgmuyPoWe4RgjOobmHk69fx4J2SS+NkOLTUktf2MDPtmfrLtxytECDJdOJhElxRKsxzQT5PjrWoCzw9yTOPiE6p3oMbfHCaFyFcIRVocXMBq3/xZdN/OdU5sLmkPrfC24OKjLypc4RX3W76vWAnw2xxgeTAToLnx3wu87SyWs52uG56B2zFlqHSveHv4fOVqklTv+h+d5lVAuPLXfLx+YhVTAqvKzw77wa+Lk02CBYE9bPYf/U454e6m2VXMckOBmDOrhSjc3rviSAo4PRitQiCRMs6QE4aZJrZm0Aa5yKYECqHISZ3AO3Z/JoCAn/EYqHX1GgxGw=
+  - secure: YYnwFw8J/NgzttoqwAtJiGwBtp10Cyld+11CzYheJDJxfQD64WyHRByhaPraUHcZAQfj12pYK2BxhHHHv5JreoyXtxkqH5y9s3aP8L/tDz2P2QT0AGP91xKptXEbhC2npl4myxVyYeWmxBf40yamvfnAFQAVfI87qRpadJcdIXWDFpSznVIA3K1UUJkweMgShK0PJLUvaQA1+mEKl6TM90Eb6dsfG5RNWhxRWZ4ORg4BXWOUvkjLfglCEewjmoa3WjONfU7+u41qP4MfntxPDn11IKCidOUIQQ1ya+n0LLdhEKL/0TPMaks8q7vdHG4+lWdcqcuUvp2KjTOEfs58mbCL4MbH4sVZFpyoUWLSg/6AWOwpdO3+f8M4FXxv1XBGIIY8we6p2HLzjuko4x1BBgyb7VaAOXtswn7yyfxNf86yYaQWL9UiMz44nS78sF/1fwfyC0ZripktsYnCGlRp7S/U81oALOMOUpQlDE+67qg9M7vFT2lt4C7Z1+L8wtzew8LgrvF7cr66XN3+gCxIPDZtO7PqNletFss0oaotewCUr8YfZnTfzQKJcC53Jzibpx1mTV40NmoJ0m+IBbZe9d0nHUZfTR0OvHdJ2+eU+JYGfl8i9mwYKplWAsiqLU81vop2jOKFXBYRh/Wljdyco9+bMuhN7sdTTnIdN0Yh8VM=
+  - secure: kVExa0eE5pk7fI+xX/JctSlCgyxwRA3BvXBUQDMhto1jRyewBYDc5Pj/zjZJl5GN8FhdOqj4LXBeiN2KI9eGsJ4lpg3cjqfil/RKin7IQUh4bGPmdEswez0qdoHdowQ5X8jIDRDQxU4N5hDBGiN6JiurCQ8C07eHkAvAzBSejkLkw+R+YCRN1fBvgA1GhUntGuwqS8pUAHMGtzlrDc3Sbu4UTgDX8isf/srOdUF8KjaMYyRovyaqbl2QPT+DS4TMC9dwXIl1SEKHIYJOOSjt3W/4hHr1zcAtfE/EqsHrzoO5AizKEdLInbytFsPLd8Ullo5VmLuw/cTtujDhIC0ws8G3L59YgJesOK1vZMXoFPDkUeAklgqQY7ciCF4P6nws/23oQ1No5wkNruvb0NlTl+4Q2mKIknetGJ+SUIytAr/6IfnlhlCvt3eOQxvfWVPXIDgbechnbKxWJnUAcl5VVO7duZXClSSHi4bmfztPiBn+Ea2rbDSohvRvlr/W5Th/Ycjon3rB0iXeeqYhzdvTpDI7MDKoCISCvGn3PvfVFNgy7RZBcupcroywwQfpsis74tp1P3RptRYGZiEA0+sBOXn6BR+jzPylPGFH2C7EVUSCE8Ed2Hgc29DOcd1c1PSe/QiAUxPvnq8dOR7lnLuahcSWkdiBnyGGRVa3uLueLkY=
   - REPO=swatlabs/godataberus
   - VERSION=0.0.1
   - COMMIT=${TRAVIS_COMMIT::8}
@@ -29,11 +29,14 @@ script:
   - make lint
   - make check test tests
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      docker build -t $REPO:$VERSION -f Dockerfile .;
-      docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD;
-      docker push $REPO:$VERSION;
-    fi
+  - docker build -t $REPO:$VERSION -f Dockerfile .;
+  - docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD;
+  - docker push $REPO:$VERSION;
+    #- if [ "$TRAVIS_BRANCH" == "master" ]; then
+    #  docker build -t $REPO:$VERSION -f Dockerfile .;
+    #  docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD;
+    #  docker push $REPO:$VERSION;
+    #fi
 notifications:
   email:
     recipients:
