@@ -6,6 +6,7 @@ import (
 	"github.com/swatlabs/GoDataberus/database"
 	"github.com/swatlabs/GoDataberus/datamodel"
 	"testing"
+	"net/http"
 	"github.com/gorilla/mux"
 	"net/http/httptest"
 )
