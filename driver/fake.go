@@ -5,6 +5,7 @@ import (
 	"github.com/swatlabs/GoDataberus/datamodel"
 	"github.com/swatlabs/GoDataberus/database"
 )
+//Fake struct
 type Fake struct {}
 
 //Initialize Fake function

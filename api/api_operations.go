@@ -41,7 +41,7 @@ func HandlerSearch(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-//HandlerExists
+//HandlerExists function
 func HandlerExists(w http.ResponseWriter, r *http.Request) {
 
 	vars:=retrieveMuxVars(r)

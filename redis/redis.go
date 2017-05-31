@@ -15,7 +15,7 @@ func NewRedis() redis.Conn {
 	return conn
 
 }
-
+//RetrieveConnectionData function
 func RetrieveConnectionData(uuid string) database.ConnectionDB{
 	var connectData database.BodyRequest
 	dbconnect, _ := redis.Strings((NewRedis()).Do("LRANGE", uuid, 0, -1))
