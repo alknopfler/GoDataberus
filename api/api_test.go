@@ -6,15 +6,14 @@ import (
 	"github.com/swatlabs/GoDataberus/database"
 	"github.com/swatlabs/GoDataberus/datamodel"
 	"testing"
+	"github.com/gorilla/mux"
+	"net/http/httptest"
 )
 
 type fakeDriver struct{}
 
-func TestMyRouterHandler(t *testing.T) {
-	fmt.Printf("Tests must be fixed.")
-}
 
-/**
+
 func TestMyRouterHandler(t *testing.T) {
 	cases := []struct {
 		description          string
@@ -65,7 +64,7 @@ func TestMyRouterHandler(t *testing.T) {
 
 	}
 }
-**/
+
 func (f *fakeDriver) Initialize(c *database.ConnectionDB) error {
 	if c.DbName == "service" && c.DbIpaddress == "localhost" {
 		return nil

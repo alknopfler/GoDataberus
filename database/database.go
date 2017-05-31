@@ -16,10 +16,13 @@ type ConnectionDB struct {
 }
 
 //NewConnectionDB constructor
-func NewConnectionDB(host string, database string) *ConnectionDB {
+func NewConnectionDB(proto,ipaddress,port,dbname,dbcollection string) *ConnectionDB {
 	connectionDB := new(ConnectionDB)
-	connectionDB.DbIpaddress = host
-	connectionDB.DbName = database
+	connectionDB.DbProto = proto
+	connectionDB.DbIpaddress = ipaddress
+	connectionDB.DbPort =  port
+	connectionDB.DbName = dbname
+	connectionDB.DbCollection = dbcollection
 	return connectionDB
 }
 
