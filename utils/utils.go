@@ -18,13 +18,13 @@ func GetDataFromBody(r *http.Request) (database.BodyRequest, error) {
 	b, err := ioutil.ReadAll(r.Body)
 	defer r.Body.Close()
 	if err != nil {
-		gologger.Print("ERROR", 1, "Error while reading input JSON", "utils.go")
+		gologger.Print("ERROR", 1, "Error while reading input JSON", "api_utils.go")
 		return value, err
 	}
 
 	err = json.Unmarshal(b, &value)
 	if err != nil {
-		gologger.Print("ERROR", 2, "Error while unmarshalling input JSON", "utils.go")
+		gologger.Print("ERROR", 2, "Error while unmarshalling input JSON", "api_utils.go")
 		return value, err
 	}
 	return value, nil
@@ -37,7 +37,7 @@ func GetDriver(input string) database.Store {
 		drv := driver.MongoDB{}
 		return &drv
 	default:
-		drv := driver.MongoDB{}
+		drv := driver.Fake{}
 		return &drv
 	}
 }
