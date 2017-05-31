@@ -2,15 +2,15 @@ package api
 
 import (
 	"encoding/json"
-	"net/http"
-	"github.com/swatlabs/GoDataberus/utils"
 	"github.com/swatlabs/GoDataberus/redis"
+	"github.com/swatlabs/GoDataberus/utils"
+	"net/http"
 )
 
 //HandlerCheckConnections function
 func HandlerCheckConnections(w http.ResponseWriter, r *http.Request) {
 
-	vars:=retrieveMuxVars(r)
+	vars := retrieveMuxVars(r)
 
 	if db, err := utils.GetDataFromBody(r); err != nil {
 		responseWithError(w, http.StatusBadRequest, err.Error())
@@ -25,4 +25,3 @@ func HandlerCheckConnections(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 }
-
