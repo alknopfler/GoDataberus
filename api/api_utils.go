@@ -8,6 +8,7 @@ import (
 	"github.com/swatlabs/GoDataberus/utils"
 )
 
+
 func responseWithError(w http.ResponseWriter, code int, message string) {
 	responseWithJSON(w, code, map[string]string{"error": message})
 }

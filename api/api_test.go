@@ -1,21 +1,17 @@
 package api
 
 import (
-	"errors"
 	"fmt"
-	"github.com/swatlabs/GoDataberus/database"
-	"github.com/swatlabs/GoDataberus/datamodel"
 	"testing"
 	"net/http"
 	"github.com/gorilla/mux"
 	"net/http/httptest"
+	"bytes"
+
 )
 
-type fakeDriver struct{}
 
-
-
-func TestMyRouterHandler(t *testing.T) {
+func TestHandlerCheckConnections(t *testing.T) {
 	cases := []struct {
 		description          string
 		testURL              string
@@ -24,19 +20,19 @@ func TestMyRouterHandler(t *testing.T) {
 	}{
 		{
 			description:          "Test HTTP Status OK",
-			testURL:              "/v0/countries/spain/services/svc1",
-			method:               "GET",
-			expectedResponseCode: http.StatusOK,
+			testURL:              "/v0/connections/fake",
+			method:               "PUT",
+			expectedResponseCode: http.StatusCreated,
 		},
 		{
 			description:          "Test HTTP URL not found",
-			testURL:              "/v0/countries/spain/services",
-			method:               "GET",
+			testURL:              "/v0/connections",
+			method:               "PUT",
 			expectedResponseCode: http.StatusNotFound,
 		},
 		{
 			description:          "Test HTTP Wrong Method",
-			testURL:              "/v0/countries/spain/services/svc1",
+			testURL:              "/v0/connections/fake",
 			method:               "PATCH",
 			expectedResponseCode: http.StatusNotFound,
 		},
@@ -45,15 +41,24 @@ func TestMyRouterHandler(t *testing.T) {
 	for _, c := range cases {
 
 		r := mux.NewRouter()
-		req, _ := http.NewRequest(c.method, c.testURL, nil)
+		var jsonStr = []byte(`{
+	"DBconnection":
+	{
+		"DbProto":"http",
+		"DbIpaddress":"localhost",
+		"DbPort":"27017",
+		"DbName":"Test",
+		"DbUsername":"",
+		"DbPassword":"",
+		"DbCollection":"testing"
+	}
+}`)
+		req, _ := http.NewRequest(c.method, c.testURL, bytes.NewBuffer(jsonStr) )
 		res := httptest.NewRecorder()
 
-		f := fakeDriver{}
-		db := database.ConnectionDB{"localhost", "test"}
-
-		r.HandleFunc("/v0/countries/{country}/services/{serviceid}", func(w http.ResponseWriter, r *http.Request) {
-			HandlerServices(res, req, &f, db)
-		}).Methods("GET")
+		r.HandleFunc("/v0/connections/{dbType}", func(w http.ResponseWriter, r *http.Request) {
+			HandlerCheckConnections(res, req)
+		}).Methods("PUT")
 
 		r.ServeHTTP(res, req)
 
@@ -61,34 +66,8 @@ func TestMyRouterHandler(t *testing.T) {
 			fmt.Println(c.description)
 			t.Errorf("Error, expected: %d Received: %d", c.expectedResponseCode, res.Code)
 		}
-		fmt.Printf("%s: code result: %d and Code Expected: %d \n", c.description, res.Code, c.expectedResponseCode)
+		fmt.Printf("%s:**** PASS ****code result: %d and Code Expected: %d \n", c.description, res.Code, c.expectedResponseCode)
 
 	}
 }
 
-func (f *fakeDriver) Initialize(c *database.ConnectionDB) error {
-	if c.DbName == "service" && c.DbIpaddress == "localhost" {
-		return nil
-	}
-	return errors.New("Error Fake Initialize")
-
-}
-
-/**
-func (f *fakeDriver) InsertEntity(i *datamodel.Information) error {
-
-	if i.Service != "" {
-		return nil
-	}
-	return errors.New("Error Fake insertEntity")
-
-}
-**/
-
-func (f *fakeDriver) GetEntity(field, searchItem string) (result []datamodel.Information, err error) {
-	return result, nil
-}
-
-func (f *fakeDriver) IsNew(field string, searchItem string) bool {
-	return true
-}
