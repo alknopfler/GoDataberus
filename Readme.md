@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/SwatLabs/GoDataberus.svg)](https://travis-ci.org/SwatLabs/GoDataberus)
+
 # GoDataberus
 
 GoDataberus is a "Database Driver API" in order to reduce the complexity of the CRUD operations in some common databases.
