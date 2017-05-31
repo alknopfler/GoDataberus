@@ -36,6 +36,9 @@ func GetDriver(input string) database.Store {
 	case "mongo":
 		drv := driver.MongoDB{}
 		return &drv
+	case "etcd":
+		drv := driver.Etcd{}
+		return &drv
 	default:
 		drv := driver.Fake{}
 		return &drv

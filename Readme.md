@@ -26,7 +26,26 @@ GoDataberus has been developed in Golang and contains:
 ## Available DB Backend connections
 
 By now, the drivers available are:
-- MongoDB (dbType= mongo)
+- **MongoDB (dbType: mongo)**
+
+    Example:
+    
+    `'{
+       	"DBconnection":
+       		{		"DbProto":"http",
+       				"DbIpaddress":"localhost",
+       				"DbPort":"27017",
+       				"DbName":"Databerus",
+       			    "DbUsername":"",		
+       			    "DbPassword":"",		
+       			    "DbCollection":"Test"
+       	    }
+       	}' `
+- **ETCD (dbType: etcd)**
+   
+   Example:
+   
+   ``
 
 ## Register a Database Backend connection
 
