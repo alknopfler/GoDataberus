@@ -29,14 +29,11 @@ script:
   - make lint
   - make check test tests
 after_success:
-  - docker build -t $REPO:$VERSION -f Dockerfile .;
-  - docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD;
-  - docker push $REPO:$VERSION;
-    #- if [ "$TRAVIS_BRANCH" == "master" ]; then
-    #  docker build -t $REPO:$VERSION -f Dockerfile .;
-    #  docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD;
-    #  docker push $REPO:$VERSION;
-    #fi
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      docker build -t $REPO:$VERSION -f Dockerfile .;
+      docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD;
+      docker push $REPO:$VERSION;
+    fi
 notifications:
   email:
     recipients:
