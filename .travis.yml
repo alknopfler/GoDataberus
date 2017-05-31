@@ -5,7 +5,8 @@ go:
 sudo: required
 services:
   - docker
-  # - mongodb
+  - mongodb
+  - redis-server
 env:
   global:
   - secure: kgtZBCmfuhxCfq16Q6M6YpQ1C0VfvZghEyhkj7UjqBkkfn92F2kzMKA9o9qgKa3r/uKw08hb4ic/FIau8WHhv+0yZrVSu8XhRyPjW3Hmp/BXl6gZ/Ksm4QGj/wx4Hve9WKlfTx0m6IRFmosszlttM25flJjqW7yI04KExnO4qdlubg6cc3aSpWyQLbsYrSiZzWwCExYYOsw+bqbPYzJq5/cItGOZIi1pkU4aieZj0pV1eguoUaYebABzzz20nfCJXLShlHFmaptVnhJdRmIgEzVUOmrb4BrRgzkwok8QUg1Ki9ntN79rW9UY3nbYjoOEVIKc/EWNjxZltQleAUqMac7R8XDNtvCesQw6hYec1ig0Vxr2IriGex/SVMmhXEQyM2RHf4T95EicPPZ1ZNe91b5kx5j69O0WEoBt79+blnaz85w6qYG6D6CIkuKs7ikhOOvZOUouhmY97bPdg/XUI8ngK32sRTAyjWORgV27R4zsCPyZxFA3mZZFQ94KZ0K335A7mo8d5/Dwcoe+ZpXkg4DkId+6J/9W1XjPX7wyd/O8RdDYHl+8Mm1JAZNHhOloHTOdoVfptYSUuwKbjFlHB16jtHzZtNdsuYzAdmKgym94nBKnvN16apDktinIW6DKtZZYKJBGNf4aEp75SzwJGO92/ThFKMjUHEvouB9rN+I=
