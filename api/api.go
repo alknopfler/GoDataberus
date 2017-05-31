@@ -6,9 +6,8 @@ import (
 	"net/http"
 
 	"encoding/json"
-	"github.com/garyburd/redigo/redis"
-	"github.com/swatlabs/GoDataberus/database"
 	"github.com/swatlabs/GoDataberus/redis"
+	"github.com/swatlabs/GoDataberus/database"
 )
 
 //HandlerController function
@@ -24,13 +23,12 @@ func HandlerController() *mux.Router {
 //HandlerCheckConnections function
 func HandlerCheckConnections(w http.ResponseWriter, r *http.Request) {
 
-	dbType, _ := mux.Vars(r)["dbType"]
-	drv := utils.GetDriver(dbType)
+	vars:=retrieveMuxVars(r)
 
 	if db, err := utils.GetDataFromBody(r); err != nil {
 		responseWithError(w, http.StatusBadRequest, err.Error())
 	} else {
-		if err = drv.Initialize(&db.Connection); err != nil {
+		if err = vars.drv.Initialize(&db.Connection); err != nil {
 			responseWithError(w, http.StatusServiceUnavailable, err.Error())
 		} else {
 			uuid := utils.NewResourceID()
@@ -44,41 +42,30 @@ func HandlerCheckConnections(w http.ResponseWriter, r *http.Request) {
 //HandlerInsert function
 func HandlerInsert(w http.ResponseWriter, r *http.Request) {
 
-	var unencoded database.BodyRequest
-	uuid, _ := mux.Vars(r)["uuid"]
-	dbType, _ := mux.Vars(r)["dbType"]
-	drv := utils.GetDriver(dbType)
+	vars:=retrieveMuxVars(r)
+	connectData:=redisDB.RetrieveConnectionData(vars.uuid)
 
-	dbconnect, _ := redis.Strings((redisDB.NewRedis()).Do("LRANGE", uuid, 0, -1))
-	json.Unmarshal([]byte(dbconnect[0]), &unencoded.Connection)
-
-	if err := drv.Initialize(&unencoded.Connection); err != nil {
+	if err := vars.drv.Initialize(&connectData); err != nil {
 		responseWithError(w, http.StatusServiceUnavailable, err.Error())
 	} else {
 		input, err := utils.GetDataFromBody(r)
 		if err != nil {
 			responseWithError(w, http.StatusBadRequest, err.Error())
 		}
-		drv.InsertEntity(&input.Message)
+		vars.drv.InsertEntity(&input.Message)
 	}
 }
 
 //HandlerSearch function
 func HandlerSearch(w http.ResponseWriter, r *http.Request) {
 
-	var unencoded database.BodyRequest
-	field, _ := mux.Vars(r)["field"]
-	uuid, _ := mux.Vars(r)["uuid"]
-	dbType, _ := mux.Vars(r)["dbType"]
-	item, _ := mux.Vars(r)["item"]
-	drv := utils.GetDriver(dbType)
+	vars:=retrieveMuxVars(r)
+	connectData:=redisDB.RetrieveConnectionData(vars.uuid)
 
-	dbconnect, _ := redis.Strings((redisDB.NewRedis()).Do("LRANGE", uuid, 0, -1))
-	json.Unmarshal([]byte(dbconnect[0]), &unencoded.Connection)
-	if err := drv.Initialize(&unencoded.Connection); err != nil {
+	if err := vars.drv.Initialize(&connectData); err != nil {
 		responseWithError(w, http.StatusServiceUnavailable, err.Error())
 	} else {
-		result, err := drv.GetEntity(field, item)
+		result, err := vars.drv.GetEntity(vars.field, vars.item)
 		if err != nil {
 			responseWithError(w, http.StatusNotFound, err.Error())
 		}
@@ -86,22 +73,16 @@ func HandlerSearch(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-//HandlerExists need to refactor (duplicated code)
+//HandlerExists
 func HandlerExists(w http.ResponseWriter, r *http.Request) {
 
-	var unencoded database.BodyRequest
-	field, _ := mux.Vars(r)["field"]
-	uuid, _ := mux.Vars(r)["uuid"]
-	dbType, _ := mux.Vars(r)["dbType"]
-	item, _ := mux.Vars(r)["item"]
-	drv := utils.GetDriver(dbType)
+	vars:=retrieveMuxVars(r)
+	connectData:=redisDB.RetrieveConnectionData(vars.uuid)
 
-	dbconnect, _ := redis.Strings((redisDB.NewRedis()).Do("LRANGE", uuid, 0, -1))
-	json.Unmarshal([]byte(dbconnect[0]), &unencoded.Connection)
-	if err := drv.Initialize(&unencoded.Connection); err != nil {
+	if err := vars.drv.Initialize(&connectData); err != nil {
 		responseWithError(w, http.StatusServiceUnavailable, err.Error())
 	} else {
-		isNew := drv.IsNew(field, item)
+		isNew := vars.drv.IsNew(vars.field, vars.item)
 		responseWithJSON(w, http.StatusOK, isNew)
 	}
 }
@@ -115,4 +96,22 @@ func responseWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)
 	w.Write(response)
+}
+
+type reqVars struct {
+	dbType 	string
+	uuid 	string
+	field 	string
+	item 	string
+	drv     database.Store
+}
+
+func retrieveMuxVars(r *http.Request) reqVars{
+	var v reqVars
+	v.dbType,_ = mux.Vars(r)["dbType"]
+	v.uuid,_ = mux.Vars(r)["uuid"]
+	v.field,_ = mux.Vars(r)["field"]
+	v.item,_ = mux.Vars(r)["item"]
+	v.drv = utils.GetDriver(v.dbType)
+	return v
 }
