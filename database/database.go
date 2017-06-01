@@ -6,22 +6,24 @@ import (
 
 //ConnectionDB struct
 type ConnectionDB struct {
-	DbProto      string `json:"DbProto"`
-	DbIpaddress  string `json:"DbIpaddress"`
-	DbPort       string `json:"DbPort"`
-	DbName       string `json:"DbName"`
-	DbUsername   string `json:"DbUsername"`   //this is optional if the type of database requires auth
-	DbPassword   string `json:"DbPassword"`   //this is optional if the type of database requires auth
-	DbCollection string `json:"DbCollection"` //this is optional just in case that we use mongodb
+	DbProto      string `json:"Proto"`
+	DbIpaddress  string `json:"Ipaddress"`
+	DbPort       string `json:"Port"`
+	DbName       string `json:"Name"`
+	DbUsername   string `json:"Username"`   //this is optional if the type of database requires auth
+	DbPassword   string `json:"Password"`   //this is optional if the type of database requires auth
+	DbCollection string `json:"Collection"` //this is optional just in case that we use mongodb
 }
 
 //NewConnectionDB constructor
-func NewConnectionDB(proto,ipaddress,port,dbname,dbcollection string) *ConnectionDB {
+func NewConnectionDB(proto,ipaddress,port,dbname,dbusername,dbpassword,dbcollection string) *ConnectionDB {
 	connectionDB := new(ConnectionDB)
 	connectionDB.DbProto = proto
 	connectionDB.DbIpaddress = ipaddress
 	connectionDB.DbPort =  port
 	connectionDB.DbName = dbname
+	connectionDB.DbUsername = dbusername
+	connectionDB.DbPassword = dbpassword
 	connectionDB.DbCollection = dbcollection
 	return connectionDB
 }

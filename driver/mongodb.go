@@ -4,11 +4,12 @@ import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 
-	"errors"
+	//"errors"
 	"github.com/alknopfler/Gologger/gologger"
 	"github.com/swatlabs/GoDataberus/database"
 	"github.com/swatlabs/GoDataberus/datamodel"
 	"time"
+	"errors"
 )
 
 //MongoDB struct
@@ -20,7 +21,7 @@ type MongoDB struct {
 
 //Initialize mongodb  implementation
 func (mdb *MongoDB) Initialize(c *database.ConnectionDB) error {
-	if c.DbIpaddress == "" || c.DbProto == "" || c.DbName == "" || c.DbPort == "" || c.DbCollection == "" {
+	if c.DbIpaddress == ""  || c.DbProto == "" || c.DbName == "" || c.DbPort == "" || c.DbCollection == "" {
 		gologger.Print("ERROR", 1, "Empty value retrieved", "mongodb.go")
 		return errors.New("Empty values retrieved")
 	}
