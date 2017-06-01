@@ -11,8 +11,8 @@ import (
 //general data and connection test
 
 var mongo MongoDB
-var dbc = database.NewConnectionDB("http","localhost","27017", "tests","testCollection")
-var dbcError = database.NewConnectionDB("http","1.1.1.1","27088", "tests", "testCollection")
+var dbc = database.NewConnectionDB("http","localhost","27017", "tests","","","testCollection","")
+var dbcError = database.NewConnectionDB("http","1.1.1.1","27088", "tests","","", "testCollection","")
 
 func TestMongoDB_InitializeSuccessfully(t *testing.T) {
 	res := mongo.Initialize(dbc)

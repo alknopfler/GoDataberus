@@ -13,6 +13,7 @@ type ConnectionDB struct {
 	DbUsername   string `json:"Username"`   //this is optional if the type of database requires auth
 	DbPassword   string `json:"Password"`   //this is optional if the type of database requires auth
 	DbCollection string `json:"Collection"` //this is optional just in case that we use mongodb
+	DbRoot       string `json:"Root"`	//this is optional just in case that we use etcd
 }
 
 //NewConnectionDB constructor
@@ -25,6 +26,7 @@ func NewConnectionDB(proto,ipaddress,port,dbname,dbusername,dbpassword,dbcollect
 	connectionDB.DbUsername = dbusername
 	connectionDB.DbPassword = dbpassword
 	connectionDB.DbCollection = dbcollection
+	connectionDB.DbRoot = dbroot
 	return connectionDB
 }
 

@@ -8,8 +8,7 @@ import (
 	"github.com/swatlabs/GoDataberus/datamodel"
 	"github.com/alknopfler/Gologger/gologger"
 	"errors"
-
-
+	"fmt"
 )
 
 type etcdInputKey struct {
@@ -65,17 +64,19 @@ func (e *Etcd) GetEntity(field, searchItem string) (result []datamodel.Informati
 		gologger.Print("ERROR",2,"Error inserting item in ETCD","etcd.go")
 		return nil,err
 	}
-	return resp.Node.Value, nil
+	result = []datamodel.Information{{"value":resp.Node.Value}}
+	return result, nil
 }
 
-func (e *Etcd) IsNew(field string, searchItem string) bool {
-	/*resp, err := e.kapi.Get(context.Background(), e.root, nil)
+func (e *Etcd) IsNew(field, searchItem string) bool {
+	resp, err := e.kapi.Get(context.Background(), field+searchItem, nil)
 	if err != nil {
-		gologger.Print("ERROR", 4, "Error isnew in mongo", "mongodb.go")
+		gologger.Print("ERROR", 4, "Error isnew in etcd", "etcd.go")
 		return false
 	}
+	fmt.Println(resp.Node.Value)
 	if resp.Node.Value == "" {
 		return true
-	}*/
+	}
 	return false
 }

@@ -70,7 +70,7 @@ func (mdb *MongoDB) GetEntity(field, searchItem string) (result []datamodel.Info
 }
 
 //IsNew mongodb implementation
-func (mdb *MongoDB) IsNew(field string, searchItem string) bool {
+func (mdb *MongoDB) IsNew(field,searchItem string) bool {
 	c := mdb.session.DB(mdb.database).C(mdb.collection)
 	i, err := c.Find(bson.M{field: searchItem}).Count()
 	if err != nil {
