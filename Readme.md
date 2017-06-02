@@ -21,7 +21,7 @@ GoDataberus has been developed in Golang and contains:
 | ```/v0/connections/{dbType}``` | PUT | Register a new Database connection entry. Return uuid to use in the following calls to this database |
 | ```/v0/databerus/{dbType}/resources/{uuid}``` | PUT | Insert an item in the database associated to the uuid |
 | ```/v0/databerus/{dbType}/resources/{uuid}/fields/{field}/items/{item}``` | GET | Search for an item in the database associated to the uuid |
-| ```/v0/databerus/{dbType}/resources/{uuid}/exists/{field}/items/{item}``` | GET | Return True if an item exists in the database associated to the uuid |
+| ```/v0/databerus/{dbType}/resources/{uuid}/fields/{field}/items/{item}``` | Delete | Delete an item exists in the database associated to the uuid |
 
 ## Available DB Backend connections
 
@@ -122,21 +122,43 @@ curl --request PUT \
   		}'
 ```
 ### Get Item
+
 ```
 curl --request GET \
   --url http://localhost:8080/v0/databerus/mongo/resources/6edaa6e0-454e-11e7-88fa-3c15c2d66294/fields/foo/items/bar \
 ```
+In the case of ETCD:
 
+```
+curl --request GET \
+  --url http://localhost:8080/v0/databerus/etcd/resources/8d1c6082-478d-11e7-9396-3c15c2d66294/fields/root/items/key20 \
 
+```
+
+The output depend on the database query:
+```
+[
+  {
+    "_id": "5931980038136fc848d94b23",
+    "foo10": "bar10",
+    "foo11": "bar11",
+    "set": {
+      "pass1": "password"
+    }
+  }
+]
+```
+In the case of ETCD, for instance, if the key does not exists the output could be:
+
+```
+{
+  "error": "100: Key not found (/rootkey20) [25]"
+}
+```
 # Build Dockerfile
 
 ```
-TODO
+docker build -t $REPO:$VERSION -f Dockerfile .;
 ```
 
-# Run container
-
-```
-TODO
-```
 
