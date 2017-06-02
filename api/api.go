@@ -10,6 +10,7 @@ func HandlerController() *mux.Router {
 	r.HandleFunc("/v0/connections/{dbType}", HandlerCheckConnections).Methods("PUT")
 	r.HandleFunc("/v0/databerus/{dbType}/resources/{uuid}", HandlerInsert).Methods("PUT")
 	r.HandleFunc("/v0/databerus/{dbType}/resources/{uuid}/fields/{field}/items/{item}", HandlerSearch).Methods("GET")
-	r.HandleFunc("/v0/databerus/{dbType}/resources/{uuid}/exists/{field}/items/{item}", HandlerExists).Methods("GET")
+	r.HandleFunc(`/v0/databerus/{dbType}/resources/{uuid}/exists/{filed}/items/{item}`, HandlerExists).Methods("GET")
+	//r.HandleFunc(`/v0/databerus/{dbType}/resources/{uuid}/exists/{filed:[a-zA-Z0-9=\-\/]+}/items/{item}`, HandlerExists).Methods("GET")
 	return r
 }

@@ -24,6 +24,7 @@ func (f *Fake) InsertEntity(i *datamodel.Information) error {
 
 //GetEntity Fake function
 func (f *Fake) GetEntity(field, searchItem string) (result []datamodel.Information, err error) {
+
 	result = []datamodel.Information{{"num": "aaa", "strs": "bbb"}}
 	return result, nil
 }
