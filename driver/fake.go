@@ -28,7 +28,7 @@ func (f *Fake) GetEntity(field, searchItem string) (result []datamodel.Informati
 }
 
 //IsNew Fake function
-func (f *Fake) IsNew(field string, searchItem string) bool {
-	return true
+func (f *Fake) Delete(field,value string) error {
+	return nil
 }
 

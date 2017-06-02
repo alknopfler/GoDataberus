@@ -8,7 +8,6 @@ import (
 	"github.com/swatlabs/GoDataberus/datamodel"
 	"github.com/alknopfler/Gologger/gologger"
 	"errors"
-	"fmt"
 )
 
 type etcdInputKey struct {
@@ -68,15 +67,11 @@ func (e *Etcd) GetEntity(field, searchItem string) (result []datamodel.Informati
 	return result, nil
 }
 
-func (e *Etcd) IsNew(field, searchItem string) bool {
-	resp, err := e.kapi.Get(context.Background(), field+searchItem, nil)
+func (e *Etcd)Delete (field,value string) error {
+	_,err := e.kapi.Delete(context.Background(), field+value, nil)
 	if err != nil {
 		gologger.Print("ERROR", 4, "Error isnew in etcd", "etcd.go")
-		return false
+		return err
 	}
-	fmt.Println(resp.Node.Value)
-	if resp.Node.Value == "" {
-		return true
-	}
-	return false
+	return nil
 }
