@@ -26,7 +26,34 @@ GoDataberus has been developed in Golang and contains:
 ## Available DB Backend connections
 
 By now, the drivers available are:
-- MongoDB (dbType= mongo)
+- **MongoDB (dbType: mongo)**
+
+    Example:
+    
+    `'{
+       	"DBconnection":
+       		{		"Proto":"http",
+       				"Ipaddress":"localhost",
+       				"Port":"27017",
+       				"Name":"Databerus",
+       			    "Username":"",		
+       			    "Password":"",		
+       			    "Collection":"Test"
+       	    }
+       	}' `
+- **ETCD (dbType: etcd)**
+   
+   Example:
+   
+   `{
+    	"DBconnection":
+    	{
+    		"Proto":"http",
+    		"Ipaddress":"localhost",
+    		"Port":"2379",
+    		"Root":"/project/app/component/"
+    	}
+    }`
 
 ## Register a Database Backend connection
 
@@ -38,13 +65,13 @@ curl --request PUT \
   --header 'content-type: application/json' \
   --data '{
   	"DBconnection":
-  		{		"DbProto":"http",
-  				"DbIpaddress":"localhost",
-  				"DbPort":"27017",
-  				"DbName":"Databerus",
-  			    "DbUsername":"",		
-  			    "DbPassword":"",		
-  			    "DbCollection":"Test"
+  		{		"Proto":"http",
+  				"Ipaddress":"localhost",
+  				"Port":"27017",
+  				"Name":"Databerus",
+  			    "Username":"",		
+  			    "Password":"",		
+  			    "Collection":"Test"
   	    }
   	}' 
 ```
@@ -75,6 +102,22 @@ curl --request PUT \
   					{			
   					"pass1":"password"
   					}
+  		}
+  		}'
+```
+
+For ETCD should be:
+
+``` 
+curl --request PUT \
+  --url http://localhost:8080/v0/databerus/etcd/resources/ad7be5ba-46cb-11e7-bfb2-3c15c2d66294 \
+  --header 'content-type: application/json' \
+  --data '{
+  	"data":
+  		{
+  			"root":"root",
+  			"key":"key1",
+  			"value":"value1"
   		}
   		}'
 ```

@@ -1,15 +1,13 @@
 package api
 
 import (
-	"fmt"
-	"testing"
-	"net/http"
-	"github.com/gorilla/mux"
-	"net/http/httptest"
 	"bytes"
-
+	"fmt"
+	"github.com/gorilla/mux"
+	"net/http"
+	"net/http/httptest"
+	"testing"
 )
-
 
 func TestHandlerCheckConnections(t *testing.T) {
 	cases := []struct {
@@ -44,16 +42,16 @@ func TestHandlerCheckConnections(t *testing.T) {
 		var jsonStr = []byte(`{
 	"DBconnection":
 	{
-		"DbProto":"http",
-		"DbIpaddress":"localhost",
-		"DbPort":"27017",
-		"DbName":"Test",
-		"DbUsername":"",
-		"DbPassword":"",
-		"DbCollection":"testing"
+		"Proto":"http",
+		"Ipaddress":"localhost",
+		"Port":"27017",
+		"Name":"Test",
+		"Username":"",
+		"Password":"",
+		"Collection":"testing"
 	}
 }`)
-		req, _ := http.NewRequest(c.method, c.testURL, bytes.NewBuffer(jsonStr) )
+		req, _ := http.NewRequest(c.method, c.testURL, bytes.NewBuffer(jsonStr))
 		res := httptest.NewRecorder()
 
 		r.HandleFunc("/v0/connections/{dbType}", func(w http.ResponseWriter, r *http.Request) {
@@ -70,4 +68,3 @@ func TestHandlerCheckConnections(t *testing.T) {
 
 	}
 }
-
