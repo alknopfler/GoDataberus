@@ -11,8 +11,9 @@ import (
 //general data and connection test
 
 var mongo MongoDB
-var dbc = database.NewConnectionDB("http", "localhost", "27017", "tests", "testCollection")
-var dbcError = database.NewConnectionDB("http", "1.1.1.1", "27088", "tests", "testCollection")
+
+var dbc = database.NewConnectionDB("http","localhost","27017", "tests","","","testCollection","")
+var dbcError = database.NewConnectionDB("http","1.1.1.1","27088", "tests","","", "testCollection","")
 
 func TestMongoDB_InitializeSuccessfully(t *testing.T) {
 	res := mongo.Initialize(dbc)
@@ -24,7 +25,7 @@ func TestMongoDB_InitializeSuccessfully(t *testing.T) {
 }
 
 func TestMongoDB_InsertEntity(t *testing.T) {
-	var info = datamodel.Information{"num": "aaa", "strs": "bbb"}
+	var info = datamodel.Information{"num":"aaa","strs":"bbb"}
 
 	//drop collection before testing and get session *mgo Mongo
 	mongo.Initialize(dbc)
@@ -43,7 +44,8 @@ func TestMongoDB_GetEntity(t *testing.T) {
 	fmt.Println(res)
 }
 
-func TestMongoDB_IsNew(t *testing.T) {
+
+/*func TestMongoDB_IsNew(t *testing.T) {
 	mongo.Initialize(dbc)
 	mongo.session.DB(dbc.DbName).C(dbc.DbCollection).DropCollection()
 
@@ -58,4 +60,4 @@ func TestMongoDB_IsNew(t *testing.T) {
 	if mongo.IsNew("num2", "aaa2") {
 		t.Error("Error, item not found and it should be")
 	}
-}
+}*/

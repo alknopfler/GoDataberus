@@ -16,3 +16,9 @@ import:
   version: ^1.1.0
 - package: github.com/garyburd/redigo
   version: ^1.1.0
+- package: github.com/coreos/etcd
+  version: ^3.2.0-rc.1
+  subpackages:
+  - client
+- package: gopkg.in/oleiade/reflections.v1
+  version: ^1.0.0

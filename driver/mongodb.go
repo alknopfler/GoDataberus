@@ -1,15 +1,15 @@
 package driver
 
 import (
-	"fmt"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 
-	"errors"
+	//"errors"
 	"github.com/alknopfler/Gologger/gologger"
 	"github.com/swatlabs/GoDataberus/database"
 	"github.com/swatlabs/GoDataberus/datamodel"
 	"time"
+	"errors"
 )
 
 //MongoDB struct
@@ -21,7 +21,7 @@ type MongoDB struct {
 
 //Initialize mongodb  implementation
 func (mdb *MongoDB) Initialize(c *database.ConnectionDB) error {
-	if c.DbIpaddress == "" || c.DbProto == "" || c.DbName == "" || c.DbPort == "" || c.DbCollection == "" {
+	if c.DbIpaddress == ""  || c.DbProto == "" || c.DbName == "" || c.DbPort == "" || c.DbCollection == "" {
 		gologger.Print("ERROR", 1, "Empty value retrieved", "mongodb.go")
 		return errors.New("Empty values retrieved")
 	}
@@ -52,7 +52,7 @@ func (mdb *MongoDB) InsertEntity(i *datamodel.Information) error {
 	c := mdb.session.DB(mdb.database).C(mdb.collection)
 	err := c.Insert(i)
 	if err != nil {
-		fmt.Println("Error while inserting item in mongo")
+		gologger.Print("ERROR", 2, "Error inserting in mongo", "mongodb.go")
 		return err
 	}
 	return nil
@@ -64,21 +64,19 @@ func (mdb *MongoDB) GetEntity(field, searchItem string) (result []datamodel.Info
 
 	err = c.Find(bson.M{field: searchItem}).All(&result)
 	if err != nil {
-		fmt.Println("Error while running the query in mongo")
+		gologger.Print("ERROR", 3, "Error searching in mongo", "mongodb.go")
 	}
 	return result, err
 }
 
-//IsNew mongodb implementation
-func (mdb *MongoDB) IsNew(field string, searchItem string) bool {
+//DeleteEntity mongodb implementation
+func (mdb *MongoDB) DeleteEntity(field,value string) error {
 	c := mdb.session.DB(mdb.database).C(mdb.collection)
-	i, err := c.Find(bson.M{field: searchItem}).Count()
+	i := datamodel.Information{field:value}
+	err := c.Remove(i)
 	if err != nil {
-		fmt.Println("Error while running the query in mongo")
-		return false
+		gologger.Print("ERROR", 4, "Error Deleting in mongo", "mongodb.go")
+		return err
 	}
-	if i == 0 {
-		return true
-	}
-	return false
+	return nil
 }
