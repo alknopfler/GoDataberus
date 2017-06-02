@@ -29,7 +29,7 @@ func (f *Fake) GetEntity(field, searchItem string) (result []datamodel.Informati
 	return result, nil
 }
 
-//IsNew Fake function
-func (f *Fake) IsNew(field string, searchItem string) bool {
-	return true
+//DeleteEntity Fake function
+func (f *Fake) DeleteEntity(field,value string) error {
+	return nil
 }

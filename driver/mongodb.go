@@ -69,16 +69,14 @@ func (mdb *MongoDB) GetEntity(field, searchItem string) (result []datamodel.Info
 	return result, err
 }
 
-//IsNew mongodb implementation
-func (mdb *MongoDB) IsNew(field,searchItem string) bool {
+//DeleteEntity mongodb implementation
+func (mdb *MongoDB) DeleteEntity(field,value string) error {
 	c := mdb.session.DB(mdb.database).C(mdb.collection)
-	i, err := c.Find(bson.M{field: searchItem}).Count()
+	i := datamodel.Information{field:value}
+	err := c.Remove(i)
 	if err != nil {
-		gologger.Print("ERROR", 4, "Error isnew in mongo", "mongodb.go")
-		return false
+		gologger.Print("ERROR", 4, "Error Deleting in mongo", "mongodb.go")
+		return err
 	}
-	if i == 0 {
-		return true
-	}
-	return false
+	return nil
 }

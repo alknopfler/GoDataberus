@@ -25,7 +25,7 @@ func TestMongoDB_InitializeSuccessfully(t *testing.T) {
 }
 
 func TestMongoDB_InsertEntity(t *testing.T) {
-	var info = datamodel.Information{"num": "aaa", "strs": "bbb"}
+	var info = datamodel.Information{"num":"aaa","strs":"bbb"}
 
 	//drop collection before testing and get session *mgo Mongo
 	mongo.Initialize(dbc)
@@ -44,7 +44,8 @@ func TestMongoDB_GetEntity(t *testing.T) {
 	fmt.Println(res)
 }
 
-func TestMongoDB_IsNew(t *testing.T) {
+
+/*func TestMongoDB_IsNew(t *testing.T) {
 	mongo.Initialize(dbc)
 	mongo.session.DB(dbc.DbName).C(dbc.DbCollection).DropCollection()
 
@@ -59,4 +60,4 @@ func TestMongoDB_IsNew(t *testing.T) {
 	if mongo.IsNew("num2", "aaa2") {
 		t.Error("Error, item not found and it should be")
 	}
-}
+}*/

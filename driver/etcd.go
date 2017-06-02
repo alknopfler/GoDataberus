@@ -8,7 +8,6 @@ import (
 	"github.com/swatlabs/GoDataberus/datamodel"
 	"github.com/alknopfler/Gologger/gologger"
 	"errors"
-	"fmt"
 )
 
 type etcdInputKey struct {
@@ -16,12 +15,12 @@ type etcdInputKey struct {
 	key     string `json:"key"`
 	value   string `json:"value"`
 }
-
+//Etcd struct
 type Etcd struct {
 	kapi   client.KeysAPI
 }
 
-//Initialize mongodb  implementation
+//Initialize etcd  implementation
 func (e *Etcd) Initialize(c *database.ConnectionDB) error {
 	if c.DbIpaddress == ""  || c.DbProto == "" || c.DbPort == "" {
 		gologger.Print("ERROR", 1, "Empty value retrieved", "etcd.go")
@@ -43,7 +42,7 @@ func (e *Etcd) Initialize(c *database.ConnectionDB) error {
 	e.kapi = client.NewKeysAPI(cli)
 	return nil
 }
-
+//InsertEntity etcd function
 func (e *Etcd) InsertEntity(i *datamodel.Information) error {
 
 	input := new(etcdInputKey)
@@ -57,7 +56,7 @@ func (e *Etcd) InsertEntity(i *datamodel.Information) error {
 	}
 	return nil
 }
-
+//GetEntity func
 func (e *Etcd) GetEntity(field, searchItem string) (result []datamodel.Information, err error) {
 	resp, err := e.kapi.Get(context.Background(), field+searchItem, nil)
 	if err != nil {
@@ -67,16 +66,12 @@ func (e *Etcd) GetEntity(field, searchItem string) (result []datamodel.Informati
 	result = []datamodel.Information{{"value":resp.Node.Value}}
 	return result, nil
 }
-
-func (e *Etcd) IsNew(field, searchItem string) bool {
-	resp, err := e.kapi.Get(context.Background(), field+searchItem, nil)
+//DeleteEntity func
+func (e *Etcd)DeleteEntity (field,value string) error {
+	_,err := e.kapi.Delete(context.Background(), field+value, nil)
 	if err != nil {
 		gologger.Print("ERROR", 4, "Error isnew in etcd", "etcd.go")
-		return false
+		return err
 	}
-	fmt.Println(resp.Node.Value)
-	if resp.Node.Value == "" {
-		return true
-	}
-	return false
+	return nil
 }

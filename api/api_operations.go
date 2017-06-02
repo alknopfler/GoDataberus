@@ -41,7 +41,7 @@ func HandlerSearch(w http.ResponseWriter, r *http.Request) {
 }
 
 //HandlerExists function
-func HandlerExists(w http.ResponseWriter, r *http.Request) {
+func HandlerDelete(w http.ResponseWriter, r *http.Request) {
 
 	vars := retrieveMuxVars(r)
 	connectData := redisDB.RetrieveConnectionData(vars.uuid)
@@ -49,7 +49,11 @@ func HandlerExists(w http.ResponseWriter, r *http.Request) {
 	if err := vars.drv.Initialize(&connectData); err != nil {
 		responseWithError(w, http.StatusServiceUnavailable, err.Error())
 	} else {
-		isNew := vars.drv.IsNew(vars.field, vars.item)
-		responseWithJSON(w, http.StatusOK, isNew)
+		err:=vars.drv.DeleteEntity(vars.field,vars.item)
+		if err != nil{
+			responseWithError(w,http.StatusNotFound,err.Error())
+		}else{
+			w.WriteHeader(http.StatusOK)
+		}
 	}
 }
