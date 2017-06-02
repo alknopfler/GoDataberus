@@ -17,11 +17,13 @@ type ConnectionDB struct {
 }
 
 //NewConnectionDB constructor
+
+
 func NewConnectionDB(proto,ipaddress,port,dbname,dbusername,dbpassword,dbcollection,dbroot string) *ConnectionDB {
 	connectionDB := new(ConnectionDB)
 	connectionDB.DbProto = proto
 	connectionDB.DbIpaddress = ipaddress
-	connectionDB.DbPort =  port
+	connectionDB.DbPort = port
 	connectionDB.DbName = dbname
 	connectionDB.DbUsername = dbusername
 	connectionDB.DbPassword = dbpassword

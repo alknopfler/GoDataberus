@@ -14,4 +14,3 @@ func HandlerController() *mux.Router {
 	//r.HandleFunc(`/v0/databerus/{dbType}/resources/{uuid}/exists/{filed:[a-zA-Z0-9=\-\/]+}/items/{item}`, HandlerExists).Methods("GET")
 	return r
 }
-
