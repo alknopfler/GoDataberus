@@ -50,7 +50,7 @@ func HandlerDelete(w http.ResponseWriter, r *http.Request) {
 	if err := vars.drv.Initialize(&connectData); err != nil {
 		responseWithError(w, http.StatusServiceUnavailable, err.Error())
 	} else {
-		err:=vars.drv.Delete(vars.field,vars.item)
+		err:=vars.drv.DeleteEntity(vars.field,vars.item)
 		if err != nil{
 			responseWithError(w,http.StatusNotFound,err.Error())
 		}else{

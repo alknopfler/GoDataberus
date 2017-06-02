@@ -69,8 +69,8 @@ func (mdb *MongoDB) GetEntity(field, searchItem string) (result []datamodel.Info
 	return result, err
 }
 
-//IsNew mongodb implementation
-func (mdb *MongoDB) Delete(field,value string) error {
+//DeleteEntity mongodb implementation
+func (mdb *MongoDB) DeleteEntity(field,value string) error {
 	c := mdb.session.DB(mdb.database).C(mdb.collection)
 	i := datamodel.Information{field:value}
 	err := c.Remove(i)

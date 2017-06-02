@@ -44,13 +44,13 @@ func TestHandlerCheckConnections(t *testing.T) {
 		var jsonStr = []byte(`{
 	"DBconnection":
 	{
-		"DbProto":"http",
-		"DbIpaddress":"localhost",
-		"DbPort":"27017",
-		"DbName":"Test",
-		"DbUsername":"",
-		"DbPassword":"",
-		"DbCollection":"testing"
+		"Proto":"http",
+		"Ipaddress":"localhost",
+		"Port":"27017",
+		"Name":"Test",
+		"Username":"",
+		"Password":"",
+		"Collection":"testing"
 	}
 }`)
 		req, _ := http.NewRequest(c.method, c.testURL, bytes.NewBuffer(jsonStr) )

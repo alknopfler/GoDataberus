@@ -40,6 +40,6 @@ type BodyRequest struct {
 type Store interface {
 	Initialize(c *ConnectionDB) error
 	InsertEntity(i *datamodel.Information) error
-	Delete(field,value string) error
+	DeleteEntity(field,value string) error
 	GetEntity(field, searchItem string) ([]datamodel.Information, error)
 }
