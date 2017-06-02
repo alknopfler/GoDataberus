@@ -18,7 +18,7 @@ type ConnectionDB struct {
 
 //NewConnectionDB constructor
 
-
+//NewConnectionDB constructor
 func NewConnectionDB(proto,ipaddress,port,dbname,dbusername,dbpassword,dbcollection,dbroot string) *ConnectionDB {
 	connectionDB := new(ConnectionDB)
 	connectionDB.DbProto = proto

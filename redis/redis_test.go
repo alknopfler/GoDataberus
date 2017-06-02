@@ -12,7 +12,7 @@ func TestRetrieveConnectionData(t *testing.T) {
 
 	//create fake uuid and fake connection
 	fakeuuid := utils.NewResourceID()
-	fakeConn := database.ConnectionDB{"http", "localhost", "27017", "tests", "", "", "testCollection"}
+	fakeConn := database.ConnectionDB{"http", "localhost", "27017", "tests", "", "", "testCollection",""}
 	encode, _ := json.Marshal(fakeConn)
 	(NewRedis()).Do("LPUSH", fakeuuid, encode)
 
